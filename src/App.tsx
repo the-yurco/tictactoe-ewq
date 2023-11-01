@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Player from './components.tsx/Player';
-import GameBoard from './components.tsx/GameBoard';
+import Player from './components/Player';
+import GameBoard from './components/GameBoard';
 
 const App = () => {
 	return (
