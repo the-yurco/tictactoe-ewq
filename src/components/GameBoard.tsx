@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { initialGameBoard } from '../data/gameBoard';
 
-type Props = {};
+type Props = {
+	onSelectSquare: () => void;
+	activePlayerSymbol: string;
+};
 
 type GameSquare = string | null;
 
@@ -10,15 +13,17 @@ type BoardParams = {
 	colIndex: number;
 };
 
-const GameBoard = (props: Props) => {
+const GameBoard = ({ onSelectSquare, activePlayerSymbol }: Props) => {
 	const [gameBoard, setGameBoard] = useState<GameSquare[][]>(initialGameBoard);
 
 	const handleSelectSquare = ({ rowIndex, colIndex }: BoardParams) => {
 		setGameBoard((prevGameBoard) => {
 			const updatedBoard = prevGameBoard.map((row) => [...row]);
-			updatedBoard[rowIndex][colIndex] = 'X';
+			updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
 			return updatedBoard;
 		});
+
+		onSelectSquare();
 	};
 
 	return (

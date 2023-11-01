@@ -1,12 +1,12 @@
-import { log } from 'console';
 import React, { ReactNode, useState } from 'react';
 
 type Props = {
 	initialName: string;
 	symbol: string;
+	isActive: boolean;
 };
 
-const Player = ({ initialName, symbol }: Props) => {
+const Player = ({ initialName, symbol, isActive }: Props) => {
 	// !TODO ---- useState isEditing, setIsEditing
 	// add func. thats triggered when the button is clicked
 	// change isEditing to true in that function
@@ -39,7 +39,7 @@ const Player = ({ initialName, symbol }: Props) => {
 
 	return (
 		<div className="wrapper">
-			<li>
+			<li className={isActive ? 'active' : undefined}>
 				<span className="player">
 					{!isEditing ? CONST_PLAYER_NAME : CONST_INPUT}
 					<span className="player-symbol">{symbol}</span>
