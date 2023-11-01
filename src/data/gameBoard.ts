@@ -1,4 +1,4 @@
-export const initialGameBoard = [
+export const INITIALGAMEBOARD = [
 	[null, null, null],
 	[null, null, null],
 	[null, null, null]

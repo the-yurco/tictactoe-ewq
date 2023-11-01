@@ -1,9 +1,9 @@
 import React from 'react';
-import { initialGameBoard } from '../data/gameBoard';
+import { INITIALGAMEBOARD } from '../data/gameBoard';
 
 type Props = {
 	onSelectSquare: (rowIndex: number, colIndex: number) => void;
-	turns: Turn[];
+	board: Turn[];
 };
 
 type Turn = {
@@ -12,16 +12,16 @@ type Turn = {
 	player: string;
 };
 
-const GameBoard = ({ onSelectSquare, turns }: Props) => {
+const GameBoard = ({ onSelectSquare, board }: Props) => {
 	let gameBoard: (string | null)[][] = [];
 
-	// Initialize the game board based on initialGameBoard
-	initialGameBoard.forEach((row) => {
+	// Initialize the game board based on INITIALGAMEBOARD
+	INITIALGAMEBOARD.forEach((row) => {
 		gameBoard.push([...row]);
 	});
 
 	// Update the game board based on turns
-	for (const turn of turns) {
+	for (const turn of board) {
 		const { rowIndex, colIndex, player } = turn;
 		gameBoard[rowIndex][colIndex] = player;
 	}
@@ -34,7 +34,10 @@ const GameBoard = ({ onSelectSquare, turns }: Props) => {
 						<ol>
 							{row.map((playerSymbol, colIndex) => (
 								<li key={colIndex}>
-									<button onClick={() => onSelectSquare(rowIndex, colIndex)}>
+									<button
+										onClick={() => onSelectSquare(rowIndex, colIndex)}
+										disabled={playerSymbol !== null}
+									>
 										{playerSymbol}
 									</button>
 								</li>
@@ -43,6 +46,7 @@ const GameBoard = ({ onSelectSquare, turns }: Props) => {
 					</li>
 				))}
 			</ol>
+			<button onClick={() => onSelectSquare}>Reset Board</button>
 		</div>
 	);
 };
