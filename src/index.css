@@ -109,15 +109,22 @@ h1 {
 	font-weight: bold;
 }
 
-.player.wrapper {
+.wrapper li {
 	display: flex !important;
 	justify-content: center;
 	align-items: center;
 }
 
+.wrapper {
+	display: flex !important;
+	justify-content: start;
+	margin: 0 0 0 5rem;
+	align-items: center;
+}
+
 .player-name {
 	display: inline-block;
-	width: 10rem;
+	width: 8rem;
 	font-size: 1rem;
 	color: #e1dec7;
 	text-transform: uppercase;

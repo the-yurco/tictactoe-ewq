@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Player from './components.tsx/Player';
+import GameBoard from './components.tsx/GameBoard';
 
 const App = () => {
 	return (
@@ -9,7 +10,7 @@ const App = () => {
 				<Player initialName={'Player1'} symbol={'X'} />
 				<Player initialName={'Player2'} symbol={'O'} />
 			</ol>
-			GAME BOARD
+			<GameBoard />
 		</section>
 	);
 };
